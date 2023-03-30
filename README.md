@@ -1,1 +1,1 @@
-# password-challenge
+# Password Challenge (Module 03)

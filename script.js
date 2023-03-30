@@ -20,15 +20,19 @@ let specialChar = false;
 let numChar = false;
 let lowerChar = false;
 let upperChar = false;
+let numError = "Please enter a number from 8 to 128.";
 
 function writePass1(){
+  
   let passFirst = prompt("How many characters would you like your password to contain?");
-
-    if (passFirst < 8){
-      alert("The password must contain at least 8 characters.")
+    /*if (passFirst !== Number){
+      alert(numError)
+    }
+    else*/ if (passFirst < 8){
+      alert(numError)
     }
     else if (passFirst > 128){
-      alert("The password can contain at most 128 characters.")
+      alert(numError)
     }
     else{
       numOfChar = passFirst;
@@ -37,19 +41,19 @@ function writePass1(){
 }
 
 function writePass2(){
-  alert(numOfChar)
+  // alert(numOfChar)
   if (confirm("Click OK to confirm including special characters.")){
     specialChar = true;
-  } else{specialChar = false}
+  }
   if (confirm("Click OK to confirm including numbers.")){
     numChar = true;
-  } else{numChar = false}
+  }
   if (confirm("Click OK to confirm using lowercase letters.")){
     lowerChar = true;
-  } else{lowerChar = false}
+  }
   if (confirm("Click OK to confirm using uppercase letters.")){
     upperChar = true;
-  } else{numChar = false}
+  }
   if (specialChar || numChar || lowerChar || upperChar === true){
     writePass3();
   } else{
@@ -58,10 +62,13 @@ function writePass2(){
   }
 }
 
-let ranPass = []
+drawRandom = ""
 
 function writePass3(){
   let passChars = [];
+  var passwordText = document.querySelector("#password");
+
+
   if(specialChar === true){
     passChars.push("!","#","$","%","&","(","*","+",",","-",".","/",":",";","<","=",">","?","@","[","]","^","_","{","|","}","~");
   }
@@ -74,8 +81,11 @@ function writePass3(){
   if(upperChar === true){
     passChars.push("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
   }
+  // alert(numOfChar);
+  // alert(passChars);
   for (let i = 0; i < numOfChar; i++) {
-    drawRandom = passChars[Math.floor(Math.random() * numOfChar)];
-    ranPass.push(drawRandom);
+    drawRandom += passChars[Math.floor(Math.random() * passChars.length)];
   }
+  passwordText.value = drawRandom;
 }
+
