@@ -25,10 +25,7 @@ let numError = "Please enter a number from 8 to 128.";
 function writePass1(){
   
   let passFirst = prompt("How many characters would you like your password to contain?");
-    /*if (passFirst !== Number){
-      alert(numError)
-    }
-    else*/ if (passFirst < 8){
+    if (passFirst < 8){
       alert(numError)
     }
     else if (passFirst > 128){
@@ -41,7 +38,6 @@ function writePass1(){
 }
 
 function writePass2(){
-  // alert(numOfChar)
   if (confirm("Click OK to confirm including special characters.")){
     specialChar = true;
   }
@@ -81,8 +77,6 @@ function writePass3(){
   if(upperChar === true){
     passChars.push("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
   }
-  // alert(numOfChar);
-  // alert(passChars);
   for (let i = 0; i < numOfChar; i++) {
     drawRandom += passChars[Math.floor(Math.random() * passChars.length)];
   }
